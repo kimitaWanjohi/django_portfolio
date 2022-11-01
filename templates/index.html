@@ -174,43 +174,8 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
                 <h2>WORK EXPERIENCE</h2>
 
             </div>
-
-                <div class="col-twelve">
-
-                <div class="timeline-wrap">
-
-                    <div class="timeline-block" style="text-align: center">
-
-                        <div class="timeline-ico">
-                            <i class="fa fa-chalkboard-teacher"></i>
-                        </div>
-
-                        <div class="timeline-header">
-                            <h3>Internship</h3>
-                            <p style="text-align: center;">June 2022 - September 2022</p>
-                        </div>
-
-                        <div class="timeline-content">
-                            <h2  style="color: white;">Gearbox, Nairobi, Kenya</h2>
-                            <h3 style="color: white;">Software Engineer Intern(FullStack)</h3>
-                            <h5>At Gearbox, I took part in two projects; Lights Automation and Door Automation.</h5>
-                            <h5>Using ReactJs, I built the Lights Automation UI responsible for toggling the lights.</h5>
-                            <h5>Worked alongside the frontend team to build the documentation website for both projects using ReactJs and Flask.</h5>
-                            <h5>Worked alongside the Machine learning team to dockerize and deploy a facial recognition model to the DigitalOcean Cloud platform.</h5>
-                            <h5>Guided other junior interns in building their portfolios.</h5>
-
-                        </div>
-
-                    </div>
-
-
-
-                </div>
-
-
-            </div>
-
-
+            
+            {% for experience in experiences %}
             <div class="col-twelve">
 
                 <div class="timeline-wrap">
@@ -222,17 +187,12 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
                         </div>
 
                         <div class="timeline-header">
-                            <h3>Software Engineer</h3>
-                            <p style="text-align: center;">November 2021 - April 2022</p>
+                            <h3>{{ experience.name }}</h3>
+                            <p style="text-align: center;">{{ experience.duration }}</p>
                         </div>
 
                         <div class="timeline-content">
-                            <h2  style="color: white;">CoverHunt,  Nairobi, Kenya</h2>
-                            <h3 style="color: white;">Software Engineer</h3>
-                            <h5>Wrote scripts for post-processing insurance policy data</h5>
-                            <h5>Using Django, I built a GraphQL API that provides insurance comparisons.</h5>
-                            <h5>Worked on the Mpesa and Stripe integration to allow the processing of mobile money payments.</h5>
-
+                            {{ experience.description | safe}}
                         </div>
 
                     </div>
@@ -243,6 +203,7 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
 
 
             </div>
+            {% endfor %}
 
         </div>
 
