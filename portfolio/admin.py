@@ -5,17 +5,17 @@ from .models import Eductation, Experience, Project, Blogs
 @admin.register(Eductation)
 class EductationAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
-    list_display = ('name', 'school', 'start_date', 'end_date')
+    list_display = ('name', 'school', 'duration')
 
 @admin.register(Experience)
 class ExperienceAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
-    list_display = ('name', 'company', 'start_date', 'end_date')
+    list_display = ('name', 'company', 'duration')
 
 @admin.register(Project)
 class ProjectAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
-    list_display = ('name', 'live_link', 'source_link', 'start_date', 'end_date')
+    list_display = ('name', 'live_link', 'source_link')
 
 @admin.register(Blogs)
 class BlogsAdmin(SummernoteModelAdmin):

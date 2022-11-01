@@ -4,8 +4,7 @@ class Eductation(models.Model):
     name = models.CharField(max_length=255)
     school = models.CharField(max_length=255)
     description = models.TextField()
-    start_date = models.TextField()
-    end_date = models.DateField()
+    duration = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
@@ -14,8 +13,7 @@ class Experience(models.Model):
     name = models.CharField(max_length=255)
     company = models.CharField(max_length=255)
     description = models.TextField()
-    start_date = models.TextField()
-    end_date = models.TextField()
+    duration = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
@@ -27,8 +25,7 @@ class Project(models.Model):
     description = models.TextField()
     live_link = models.URLField(max_length=200)
     source_link = models.URLField(max_length=200)
-    start_date = models.TextField()
-    end_date = models.TextField()
+    duration = models.CharField(max_length=50)
 
     
     def __str__(self):
