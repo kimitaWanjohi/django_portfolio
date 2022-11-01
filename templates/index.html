@@ -216,6 +216,7 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
 
             </div>
 
+            {% for education in educations %}
             <div class="col-twelve">
 
                 <div class="timeline-wrap">
@@ -228,21 +229,20 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
                         </div>
 
                         <div class="timeline-header">
-                            <h3>Non-Degree Program</h3>
-                            <p style="text-align: center;">June 2022 - September 2022</p>
+                            <h3>{{ education.name }}</h3>
+                            <p style="text-align: center;">{{ education.duration }}</p>
                         </div>
 
                         <div class="timeline-content">
-                            <h4>GearBox Academy</h4>
-                            <h5>Software Engineering and IoT</h5>
+                            {{ education.description | safe}}
                         </div>
 
                     </div>
 
                 </div>
 
-
             </div>
+            {% endfor %}
 
 
         </div>
@@ -274,7 +274,7 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
 
         <div class="row button-section">
             <div class="col-twelve"></div>
-            <a href="{% static 'assets/kimita_resume.pdf' %}" target="_blank" title="Download Resume" class="button button-primary">Download Resume</a>
+            <a href="https://docs.google.com/document/d/1UYEcIl19lVxRLi8hEnkloCbOQtl1W6FSojrhnP-cr6c/edit?usp=share_link" target="_blank" title="Download Resume" class="button button-primary">Download Resume</a>
         </div>
         </div>
 
@@ -284,9 +284,8 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
 
     </section>
 
-
-    <!-- Portfolio Section
-   ================================================== -->
+    {% if projects %}
+    
     <section id="projects">
 
         <div class="row section-intro">
@@ -303,43 +302,44 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
 
             <div class="col-twelve">
 
-
+                {% for project in projects %}
                 <div id="folio-wrapper" class="block-1-2 block-mob-full stack">
 
                     <div class="bgrid folio-item">
                         <div class="item-wrap">
-                            <img src="{% static '/images/projects/nft_blockchain_500x300.jpg' %}" alt="NFT Based E-Commerce Website">
-                            <a href="#modal-01" class="overlay">
+                            <img src="{{ project.screenshot.url }}" alt="{{ project.name }}">
+                            <a href="#modal-{{ project.id }}" class="overlay">
                                 <div class="folio-item-table">
                                     <div class="folio-item-cell">
-                                        <h3 class="folio-title">NFT Based E-Commerce Website</h3>
+                                        <h3 class="folio-title">{{ project.name }}</h3>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-
+                    {% endfor %}
                    
 
                     <!-- modal popups - begin -->
-
-                    <div id="modal-01" class="popup-modal slider mfp-hide">
+                    {% for project in projects %}
+                    <div id="modal-{{project.id}}" class="popup-modal slider mfp-hide">
 
                         <div class="description-box">
-                            <h4>NFT Based E-Commerce Website</h4>
-                            <p>Blockchain based warranty using NFT</p>
+                            <h4>{{ project.name }}</h4>
+                            <p>{{ project.description | safe }}</p> 
 
-                            <div class="categories">Express JS, Node JS, React JS, MongoDB, Solidity</div>
+                            <div class="categories">{{ project.technologies }}</div>
 
                         </div>
 
                         <div class="link-box">
-                            <a href="https://github.com/soumyajit4419/NFT-Based-E-Commerce-Website" target="blank">View Project</a>
-
+                            <a href="{{ project.live_link }}" target="blank">View Project</a>
+                            <a href="{{ project.source_link }}" target="blank">Source Code</a>
                             <a href="#" class="popup-modal-dismiss">Close</a>
                         </div>
 
                     </div>
+                    {% endfor %}
                     <!-- modal popups - end -->
 
                 </div>
@@ -348,8 +348,9 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
             </div>
 
         </div>
-
+        {% endif %}
         <br><br>
+        {% if blogs %}
         <div class="row section-intro">
             <div class="col-twelve">
 
@@ -367,40 +368,46 @@ I am a highly motivated self-starter and team player. Also, I'm a quick learner 
 
                 <div id="folio-wrapper" class="block-1-2 block-mob-full stack">
 
+                    {% for blog in blogs %}
                     <div class="bgrid folio-item">
                         <div class="item-wrap">
-                            <img src="./images//blogs/stegblog_500x300.jpeg" alt="Amigos">
+                            <img src="{{ blog.blog_image_link }}" alt="Amigos">
                             <a href="#blog-01" class="overlay">
                                 <div class="folio-item-table">
                                     <div class="folio-item-cell">
-                                        <h3 class="folio-title">Steganography Part-1</h3>
+                                        <h3 class="folio-title">{{ blog.title }}</h3>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
+                    {% endfor %}
 
 
-
+                    <!-- modal popups - begin -->
+                    {% for blog in blogs %}
                     <div id="blog-01" class="popup-modal slider mfp-hide">
 
                         <div class="description-box">
-                            <h4>Steganography Blog Part 1</h4>
-                            <p>This blog is about hiding text inside an Image.</p>
+                            <h4>{{ blog.title }}</h4>
+                            <p>{{ blog.description | safe }}</p>
 
                             <div class="categories"></div>
                         </div>
 
                         <div class="link-box">
-                            <a href="https://rahul1582.medium.com/steganography-6c9af950cbb3" target="blank">View Blog</a>
+                            <a href="{{ blog.blog_link }}" target="blank">View Blog</a>
                             <a href="#" class="popup-modal-dismiss">Close</a>
                         </div>
 
-                    </div>  
+                    </div>
+                    {% endfor %}
 
                     </div>
                 </div>
-
+            </div>
+        </div>
+        {% endif %}
 
 
 
