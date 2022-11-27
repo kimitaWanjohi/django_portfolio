@@ -3,6 +3,7 @@ bleach==5.0.1
 boto3==1.26.16
 botocore==1.29.16
 Django==4.1.2
+django-environ==0.9.0
 django-storages==1.13.1
 django-summernote==0.8.20.0
 gunicorn==20.1.0
